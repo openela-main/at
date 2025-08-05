@@ -3,7 +3,7 @@
 Summary:	Job spooling tools
 Name:		at
 Version:	3.1.23
-Release:	11%{?dist}
+Release:	12%{?dist}
 # http://packages.debian.org/changelogs/pool/main/a/at/current/copyright
 # + install-sh is MIT license with changes under Public Domain
 License:	GPLv3+ and GPLv2+ and ISC and MIT and Public Domain
@@ -33,6 +33,7 @@ Patch:		at-3.1.20-lock-locks.patch
 Patch:		at-3.1.23-document-n.patch
 Patch:		at-3.1.20-log-jobs.patch
 Patch:		at-3.2.23-coverity-fix.patch
+Patch:		at-3.1.23-past-date.patch
 
 BuildRequires: gcc
 BuildRequires: flex flex-static bison autoconf
@@ -166,6 +167,10 @@ chown root:root %{_localstatedir}/spool/at/.SEQ
 %attr(0644,root,root)		/%{_unitdir}/atd.service
 
 %changelog
+* Mon Jun 30 2025 Ondřej Pohořelský <opohorel@redhat.com> - 3.1.23-12
+- Add patch to fix past date handling
+- Resolves: RHEL-97024
+
 * Fri Apr 01 2022 Jan Staněk <jstanek@redhat.com> - 3.1.23-10
 - Add preceding newline to delimiter in at-3.1.20-shell.patch
   Resolves: rhbz#2070858
